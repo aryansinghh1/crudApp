@@ -1,5 +1,4 @@
-import express form "express";
-
+import express from "express";
 import userRouter from "./routes/userRoutes";
 
 const app = express();
