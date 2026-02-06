@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CrudApp | User Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-orbit"></div>
+    <div class="bg-grid"></div>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Local CRUD Console</p>
+        <h1>People in Motion</h1>
+        <p class="lede">
+          A crisp, fast CRUD interface for creating, updating, and removing
+          users. Everything updates live with the API.
+        </p>
+        <div class="hero-actions">
+          <button class="primary" id="focusCreate">Add New User</button>
+          <button class="ghost" id="refresh">Refresh List</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="stat">
+          <span class="label">Status</span>
+          <span class="value" id="status">Idle</span>
+        </div>
+        <div class="stat">
+          <span class="label">Users</span>
+          <span class="value" id="count">0</span>
+        </div>
+        <div class="stat">
+          <span class="label">Endpoint</span>
+          <span class="value monospace">/api/users</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="panel create">
+        <div class="panel-header">
+          <h2>Create User</h2>
+          <p>Capture a new person and push them into the list.</p>
+        </div>
+        <form id="createForm" autocomplete="off">
+          <label for="name">Name</label>
+          <div class="input-row">
+            <input id="name" name="name" type="text" placeholder="e.g. Arya Stark" required />
+            <button type="submit" class="primary">Create</button>
+          </div>
+          <p class="hint">Tip: Enter a name and press Enter to add.</p>
+        </form>
+      </section>
+
+      <section class="panel list">
+        <div class="panel-header">
+          <h2>All Users</h2>
+          <p>Select edit to update a name in a focused modal.</p>
+        </div>
+        <div id="empty" class="empty-state">
+          <p>No users yet. Create your first one above.</p>
+        </div>
+        <ul id="userList" class="user-list"></ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Built for the CRUD API running at port 3000.</p>
+    </footer>
+
+    <div class="modal" id="editModal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+        <div class="modal-header">
+          <h3 id="editTitle">Edit User</h3>
+          <button class="ghost small" id="modalClose" type="button">Close</button>
+        </div>
+        <form id="editForm" autocomplete="off">
+          <label for="editName">Name</label>
+          <input id="editName" name="editName" type="text" required />
+          <div class="modal-actions">
+            <button type="button" class="ghost" id="cancelEdit">Cancel</button>
+            <button type="submit" class="primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
